@@ -3,37 +3,24 @@ import styled from "styled-components"
 import { faker } from '@faker-js/faker';
 import Cart from "./cart"
 let cartAmount = null
-const Cats = (props) => {
-    const [inputAmount, setInputAmount] = useState("")
-    const changeHandler = e => {
-      setInputAmount(e.target.value)
-    }
 
-    const addToCart = (amountWanted, catWanted) => {
-      cartAmount = amountWanted
-    }
+
+
+
+const Cats = (props) => {
+  
+
     
     return (
       <>
-      <Cart amount = {props.inputAmount}/>
-      <h3>Products</h3>
+
+
+
+
       <Container>
       {props.id.map((cat, index) => {
-        return (
-        <div key= {index}>
-            <CatContainer>
-            <img src = {cat.url} alt="cat" width="160px" height="160px"/>
-            <p>{faker.name.firstName()}</p>
-           
-            <p>COST: £{(Math.random()*1000).toFixed(0)}</p>{/* // placeholder value */}
-            <p>{inputAmount}</p>
-           
-            <input type="number" onChange={changeHandler}/>
-            
-            <button onClick={() => addToCart(inputAmount, cat.url)}>Add to Cart +</button>
-            <p>{cat.description}</p>
-            </CatContainer>
-        </div>
+        return (<CatInfo key={index} name={cat} id={index}></CatInfo>
+
         )
       })}
       </Container>
@@ -41,6 +28,43 @@ const Cats = (props) => {
     )
 
 }
+
+const CatInfo =(props) =>{
+  const [inputAmount, setInputAmount] = useState("")
+  const addToCart = (amountWanted, catWanted) => {
+    cartAmount = amountWanted
+  }
+  const changeHandler = e => {
+
+    setInputAmount(e.target.value)
+    console.log(inputAmount)
+  }
+
+  const [randName, setRandName] = useState("")
+  useEffect (() => {
+    const names =faker.name.firstName()
+    setRandName(names)
+  }, [])
+
+
+  return(
+    <div >
+    <CatContainer>
+    <img src = {props.name.url} alt="cat" width="160px" height="160px"/>
+    <p>{randName}</p>
+   
+    <p>COST: £{(Math.random()*1000).toFixed(0)}</p>{/* // placeholder value */}
+    <p>{inputAmount ? inputAmount: "0"}</p>
+   
+    <input type="number" value={inputAmount<=0 ? 0 : inputAmount} onChange={changeHandler}/>
+    
+    <button onClick={() => addToCart(inputAmount, props.name.url)}>Add to Cart +</button>
+    <p>{props.name.description}</p>
+    </CatContainer>
+</div>
+  )
+}
+
 
 export default Cats
 
