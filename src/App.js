@@ -3,7 +3,11 @@ import './App.css';
 
 function App() {
   return (
-<div></div>
+<div className="main-flex">
+<Title></Title>
+<ShoppingBasket></ShoppingBasket>
+<Cats></Cats>
+</div>
 
   );
 }
