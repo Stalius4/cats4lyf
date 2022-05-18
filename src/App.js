@@ -1,8 +1,7 @@
 import './App.css';
 import { useEffect, useState } from "react";
-import Cats from './Cats';
-import { faker } from 'https://cdn.skypack.dev/@faker-js/faker';
-import Cart from './Cart';
+import Cats from "./Cats"
+import Cart from "./cart"
 
 const App = () => {
 
@@ -29,10 +28,8 @@ const App = () => {
   return (
     <>
     <h1>Cats4lyf</h1>
-    {/* <Cats id={randomCatArr} ></Cats> */}
-    <Cart></Cart>
-    <h1>{}</h1>
-  
+    {/* <Cart/> */}
+    <Cats id={randomCatArr} amount = ""/>
     </>
   );
 }
