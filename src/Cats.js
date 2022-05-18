@@ -1,44 +1,27 @@
-
-import { useEffect, useState } from "react";
-
- const Cats = () => {
-    const [randomCatArr, setRandomCatArr] = useState([])
-    const fetchData =  async () => {
-      try {
-      const response = await fetch("https://api.thecatapi.com/v1/images/search?limit=10")
-      const data = await response.json()
-      if (!response.ok){
-        throw new Error(response.statusText)
-      }
-      console.log(response)
-      setRandomCatArr(data)
-      console.log(randomCatArr)
-      } catch (err) {
-        console.log(err)
-      }
-    }
-    useEffect (() => {
-      fetchData()// eslint-disable-next-line
-    }, [])
-    
+import "./App.css"
+import App from "./App"
+import { faker } from 'https://cdn.skypack.dev/@faker-js/faker';
 
 
- return(
+const Cats = (props) =>{
 
+  const randomName = faker.animal.type(); // Willie Bahringer
+
+  return (
     <div>
-    {randomCatArr.map((cat, index) => {
+    {props.id.map((cat, index) => {
       return (
       <div key= {index} className="cat-container">
           <img src = {cat.url} alt="cat" width={"15%"}/>
-
+          <div className="title">sdasdaas.</div>
       </div>
       
       )
       
     })}
 </div>
- )
-
+  )
 }
+
 
 export default Cats
