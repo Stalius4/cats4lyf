@@ -7,7 +7,9 @@ import Cats from "./Cats"
 const Cart = (props) => {
     return (
         <>
-        <p>Quantity: {props.amount}</p>
+        <p>Cat Wanted: {props.catImage}</p>
+        <p>Cat Quantity: {props.catAmount}</p>
+        <p>Cat Price: {props.catPrice}</p>
         </>
     )
 }

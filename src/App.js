@@ -27,7 +27,7 @@ const App = () => {
     <>
     <h1>Cats4lyf</h1>
     {/* <Cart/> */}
-    <Cats id={randomCatArr} amount = ""/>
+    <Cats catArr={randomCatArr} catAmount = "" catImage = "" catPrice = ""/>
     </>
   );
 }
