@@ -1,7 +1,7 @@
 import './App.css';
 import { useEffect, useState } from "react";
 import Cats from "./Cats"
-import Cart from "./Cart"
+import Cart from "./cart"
 import { faker } from '@faker-js/faker';
 
 const App = () => {
@@ -26,7 +26,7 @@ const App = () => {
   
   
   useEffect (() => {
-    fetchData()// eslint-disable-next-line
+    fetchData()
     const names =faker.name.firstName()
   }, [])
 
