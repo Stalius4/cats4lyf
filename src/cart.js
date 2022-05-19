@@ -7,18 +7,23 @@ import App from "./App";
 const Cart = (props) => {
     return (
         <>
+    <p>Total Quantity: {}</p>
+    <p>Total Price: {}</p>
     <Container>
         <Wrapper>
             <NavbarItem flexGrow="3">Title</NavbarItem>
             <NavbarItem flexGrow="1">Quantity</NavbarItem>
             <NavbarItem flexGrow="1">Price</NavbarItem>
         </Wrapper>
+        <p>CAT</p>
+        <p>CAT AMOUNT</p>
+        <p>CAT PRICE</p>
         <Items>
-            <p>Cat Wanted: {props.catImage}</p>
+            {/* <p>Cat Wanted: {props.catImage}</p>
             <p>Cat Quantity: {props.catAmount}</p>
-            <p>Cat Price: {props.catPrice}</p>
+            <p>Cat Price: {props.catPrice}</p> */}
         </Items>
-        <Button></Button>
+
     </Container>
         </>
     )

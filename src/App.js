@@ -1,7 +1,8 @@
 import './App.css';
 import { useEffect, useState } from "react";
 import Cats from "./Cats"
-import Cart from "./cart"
+import Cart from "./Cart"
+import { faker } from '@faker-js/faker';
 
 const App = () => {
 
@@ -15,21 +16,31 @@ const App = () => {
     if (!response.ok){
       throw new Error(response.statusText)
     }
-    console.log(response)
+    // console.log(response)
     setRandomCatArr(data)
-    console.log(randomCatArr)
+    // console.log(randomCatArr)
     } catch (err) {
-      console.log(err)
+        console.log(err)
     }
   }
+  
+  
   useEffect (() => {
     fetchData()// eslint-disable-next-line
+    const names =faker.name.firstName()
   }, [])
+
+
   return (
     <>
+ {/* {props.id.map((cat, index) => {} */}
+
+
     <h1>Cats4lyf</h1>
-    {/* <Cart/> */}
-    <Cats catArr={randomCatArr} catAmount = "" catImage = "" catPrice = ""/>
+    <Cart/>
+    <Cats id={randomCatArr} />
+
+  
     </>
   );
 }
