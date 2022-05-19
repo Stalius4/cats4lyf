@@ -28,15 +28,16 @@ const Cats = (props) => {
         return (
         <div key= {index}>
             <CatContainer>
-            <img src = {cat.url} alt="cat" width={"15%"}/>
+            <img src = {cat.url} alt="cat" width="160px" height="160px"/>
             <p>{faker.name.firstName()}</p>
-            </CatContainer>
+
             
             <p>COST: £{ranNum}</p>{/* // placeholder value */}
             <p>{inputAmount}</p>
             <input type="number" onChange={changeHandler}/>
             <button onClick={() => addToCart(inputAmount, cat.url, ranNum)}>Add to Cart +</button>
             <p>{cat.description}</p>
+            </CatContainer>
         </div>
         )
       })}
@@ -49,12 +50,20 @@ const Cats = (props) => {
 export default Cats
 
 const CatContainer  = styled.div`
+border: black 2px solid;
+display: flex;
+flex-direction: column;
+justify-content: center;
 
 `
 
 const Container = styled.div`
-    /* display: flex;
+width: 85vw;
+height: 500px;
+    background-color: skyblue;
+    display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-around; */
+    justify-content: center;
+    gap: 15px;
 `
