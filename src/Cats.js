@@ -41,9 +41,12 @@ const CatInfo =(props) =>{
   }
 
   const [randName, setRandName] = useState("")
+  const [randNum, setRandNum] = useState()
   useEffect (() => {
     const names =faker.name.firstName()
+    const randNumb= (Math.random()*1000).toFixed(0) 
     setRandName(names)
+    setRandNum(randNumb)
   }, [])
 
 
@@ -52,8 +55,8 @@ const CatInfo =(props) =>{
     <CatContainer>
     <img src = {props.name.url} alt="cat" width="160px" height="160px"/>
     <p>{randName}</p>
-   
-    <p>COST: £{(Math.random()*1000).toFixed(0)}</p>{/* // placeholder value */}
+   <p>COST: £{randNum}</p>
+    <p>Total: £{randNum *inputAmount }</p>{/* // placeholder value */}
     <p>{inputAmount ? inputAmount: "0"}</p>
    
     <input type="number" value={inputAmount<=0 ? 0 : inputAmount} onChange={changeHandler}/>

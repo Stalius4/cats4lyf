@@ -17,7 +17,7 @@ const Cart = (props) => {
           <NavbarItem flexGrow="1">Price</NavbarItem>
         </Wrapper>
         <Items>
-          
+   
         </Items>
         <Button></Button>
     </Container>

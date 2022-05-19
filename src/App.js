@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import Cats from "./Cats"
 import Cart from "./cart"
 import { faker } from '@faker-js/faker';
+
 const App = () => {
 
   
@@ -38,6 +39,8 @@ const App = () => {
     <h1>Cats4lyf</h1>
     <Cart/>
     <Cats id={randomCatArr} />
+
+  
     </>
   );
 }
