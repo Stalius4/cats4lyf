@@ -1,7 +1,7 @@
 import './App.css';
 import { useEffect, useState } from "react";
 import Cats from "./Cats"
-import Cart from "./cart"
+import Cart from "./Cart"
 import { faker } from '@faker-js/faker';
 
 const App = () => {

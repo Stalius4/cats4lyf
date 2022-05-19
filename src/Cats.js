@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components"
 import { faker } from '@faker-js/faker';
-import Cart from "./cart"
+import Cart from "./Cart"
 let cartAmount = null
 
 
