@@ -46,9 +46,5 @@ const App = () => {
   );
 }
 
-
-<Wrapper></Wrapper>
-
-
 export default App;
 
