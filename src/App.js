@@ -1,8 +1,9 @@
-import { Wrapper, NavbarItem } from './App.css';
 import { useEffect, useState } from "react";
-import Cats from "./Cats"
+import Cats from "./Cats";
 import { faker } from '@faker-js/faker';
-import Cart from "./cart"
+import Cart, { NavbarItem } from "./cart";
+import Wrapper from './Wrapper'
+
 
 
 const App = () => {
@@ -39,24 +40,15 @@ const App = () => {
 
     <h1>Cats4lyf</h1>
 
-
-const Navbar = () => {
-    return (
-      <Wrapper>
-    <p>Shopping Cart</p>
-      <p>Price</p>
-      <p>Checkout</p>
-          </Wrapper>
-    );
-  
-
-
-
+ 
     <Cats id={randomCatArr} />
     </>
   );
 }
 
 
+<Wrapper></Wrapper>
+
+
 export default App;
-export default NavbarItem;
+

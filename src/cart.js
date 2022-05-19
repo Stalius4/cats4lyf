@@ -25,7 +25,7 @@ const Cart = (props) => {
    };
   
 
-   export const Wrapper = styled.div`
+export const Wrapper = styled.div`
  display: flex;
  
  align-items: center;
