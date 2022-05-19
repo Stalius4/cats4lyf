@@ -17,7 +17,11 @@ const Cart = (props) => {
           <NavbarItem flexGrow="1">Price</NavbarItem>
         </Wrapper>
         <Items>
-   
+      {props.basket.map((item, index)=>{
+        return(
+          <p key={index}>{item}</p>
+        )
+      })}
         </Items>
         <Button></Button>
     </Container>

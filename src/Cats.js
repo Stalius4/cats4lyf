@@ -15,7 +15,7 @@ const Cats = (props) => {
       <>
       <Container>
       {props.id.map((cat, index) => {
-        return (<CatInfo key={index} name={cat} id={index}></CatInfo>
+        return (<CatInfo key={index} name={cat} basket={props.basket} setBasket={props.setBasket} id={index}></CatInfo>
 
         )
       })}
@@ -46,18 +46,19 @@ const CatInfo =(props) =>{
     setRandNum(randNumb)
   }, [])
 
-  const [basket , setBasket] = useState([])
+ 
 
   const addToCart = ( ) => {
 
-    let storedCatInfo = [...basket];
+    let storedCatInfo = [...props.basket];
     storedCatInfo.push(props.name.url, randName, inputAmount, randNum);
   
-    setBasket(  storedCatInfo );
+    props.setBasket(  storedCatInfo );
     console.log(storedCatInfo) 
   }
   return(
     <div >
+      {}
     <CatContainer>
     <img src = {props.name.url} alt="cat" width="160px" height="160px"/>
     <p>{randName}</p>
