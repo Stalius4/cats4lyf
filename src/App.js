@@ -7,7 +7,10 @@ import logo from './logo';
 import styled from 'styled-components';
 
 const App = () => {
-  const [basket , setBasket] = useState([])
+  const [basket , setBasket] = useState([])// cat image
+  const [catInfo , setCatInfo] = useState([])// name, quantity, price
+  const [cartTotalPrice, setCartTotalPrice] = useState("0")
+  const [cartTotalQuantity, setCartTotalQuantity] = useState("0")
   
   
 
@@ -45,8 +48,8 @@ const App = () => {
 
 
 
-   <Cart basket={basket} />
-   <Cats id={randomCatArr} basket={basket} setBasket={setBasket} />
+  <Cart basket={basket} setBasket = {setBasket} catInfo={catInfo} cartTotalPrice = {cartTotalPrice} setCartTotalPrice = {setCartTotalPrice} cartTotalQuantity = {cartTotalQuantity} setCartTotalQuantity = {setCartTotalQuantity}/>
+    <Cats id={randomCatArr} basket={basket} setBasket={setBasket} catInfo={catInfo} setCatInfo={setCatInfo} cartTotalPrice = {cartTotalPrice} setCartTotalPrice = {setCartTotalPrice} cartTotalQuantity = {cartTotalQuantity} setCartTotalQuantity = {setCartTotalQuantity}/>
 
   
    

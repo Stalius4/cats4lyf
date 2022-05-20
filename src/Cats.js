@@ -11,8 +11,8 @@ const Cats = (props) => {
       <>
       <Container>
       {props.id.map((cat, index) => {
-        return (<CatInfo key={index} image={cat} 
-          basket={props.basket} setBasket={props.setBasket} id={index}></CatInfo>
+        return (<CatInfo key={index} image={cat} catInfo={props.catInfo} setCatInfo={props.setCatInfo}
+          basket={props.basket} setBasket={props.setBasket} id={index} cartTotalPrice = {props.cartTotalPrice} setCartTotalPrice = {props.setCartTotalPrice} cartTotalQuantity = {props.cartTotalQuantity} setCartTotalQuantity = {props.setCartTotalQuantity}></CatInfo>
 
         )
       })}
@@ -45,12 +45,22 @@ const CatInfo =(props) =>{
 
  
 
-  const addToCart = ( ) => {
-    let storedCatInfo = [...props.basket];
-    storedCatInfo.push([props.image.url, randName, inputAmount, randNum]);// use [] to bundle cats info in 1 array
-    props.setBasket(  storedCatInfo );
-
-    console.log(storedCatInfo) 
+  const addToCart = (totalPricePerCat, inputAmount) => {
+    if (inputAmount > 0){
+      // Cart items in array
+      let catBasket =[...props.basket];
+      catBasket.push([props.image.url, randName, inputAmount, totalPricePerCat]) // image, name, quantity, price
+      props.setBasket(catBasket);
+      // Cart Total price
+      let currentTotalPrice = props.cartTotalPrice;
+      props.setCartTotalPrice(Number(currentTotalPrice += totalPricePerCat));
+      // Cart Total Amount
+      let currentTotalAmount = Number(props.cartTotalQuantity);
+      
+      props.setCartTotalQuantity(currentTotalAmount += Number(inputAmount))
+      // console.log(catBasket) 
+    }
+  
   }
   return(
     <div >
@@ -66,7 +76,7 @@ const CatInfo =(props) =>{
     <Total>Total: £{randNum *inputAmount }</Total>{/* // placeholder value */}
     
     </TotalAndInput>
-    <AddCard onClick={() =>addToCart(props.id)}>Add to Cart</AddCard>
+    <AddCard onClick={() =>addToCart((randNum * inputAmount), inputAmount)}>Add to Cart </AddCard>
 
     </CatContainer>
 </div>
