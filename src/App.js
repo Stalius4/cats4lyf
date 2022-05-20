@@ -5,8 +5,8 @@ import Cart from "./cart"
 import { faker } from '@faker-js/faker';
 
 const App = () => {
-  const [basket , setBasket] = useState([])// cat image
-  const [catInfo , setCatInfo] = useState([])// name, quantity, price
+  const [basket , setBasket] = useState([])
+  
   
 
   const [randomCatArr, setRandomCatArr] = useState([])
@@ -38,8 +38,9 @@ const App = () => {
 
 
     <h1>Cats4lyf</h1>
-    <Cart basket={basket} catInfo={catInfo}/>
-    <Cats id={randomCatArr} basket={basket} setBasket={setBasket} catInfo={catInfo} setCatInfo={setCatInfo}/>
+    
+    <Cats id={randomCatArr} basket={basket} setBasket={setBasket} />
+    <Cart basket={basket} />
 
     
 

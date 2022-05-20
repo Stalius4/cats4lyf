@@ -15,7 +15,7 @@ const Cats = (props) => {
       <>
       <Container>
       {props.id.map((cat, index) => {
-        return (<CatInfo key={index} image={cat} catInfo={props.catInfo} setCatInfo={props.setCatInfo}
+        return (<CatInfo key={index} image={cat} 
           basket={props.basket} setBasket={props.setBasket} id={index}></CatInfo>
 
         )
@@ -50,14 +50,11 @@ const CatInfo =(props) =>{
  
 
   const addToCart = ( ) => {
+    let storedCatInfo = [...props.basket];
+    storedCatInfo.push([props.image.url, randName, inputAmount, randNum]);// use [] to bundle cats info in 1 array
+    props.setBasket(  storedCatInfo );
 
-    let catImage = [...props.basket];
-    let catInfo =[...props.catInfo];
-    catInfo.push ( randName, inputAmount, randNum)// name, quantity, price
-    catImage.push(props.image.url);// image
-    props.setCatInfo(catInfo)
-    props.setBasket(  catImage );
-    console.log(catImage) 
+    console.log(storedCatInfo) 
   }
   return(
     <div >
@@ -82,6 +79,7 @@ const CatInfo =(props) =>{
 export default Cats
 
 const CatContainer  = styled.div`
+
 border: black 2px solid;
 display: flex;
 flex-direction: column;
@@ -90,6 +88,7 @@ justify-content: center;
 `
 
 const Container = styled.div`
+position:relative;
 width: 85vw;
 height: 500px;
     background-color: skyblue;
