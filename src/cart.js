@@ -1,38 +1,44 @@
 import styled from 'styled-components';
-import Cats from "./Cats";
-import App from "./App";
+// import Cats from "./Cats";
+// import App from "./App";
 
 
 
 const Cart = (props) => {
-    return (
-        <>
-    <p>Total Quantity: {}</p>
-    <p>Total Price: {}</p>
-    <Container>
-        <Wrapper>
-            <NavbarItem flexGrow="3">Title</NavbarItem>
-            <NavbarItem flexGrow="1">Quantity</NavbarItem>
-            <NavbarItem flexGrow="1">Price</NavbarItem>
-        </Wrapper>
-        <p>CAT</p>
-        <p>CAT AMOUNT</p>
-        <p>CAT PRICE</p>
-        <Items>
-            {/* <p>Cat Wanted: {props.catImage}</p>
-            <p>Cat Quantity: {props.catAmount}</p>
-            <p>Cat Price: {props.catPrice}</p> */}
-        {props.basket.map((item, index)=>{
-        return(
-        <>
-        {/* <p key={index}>{item}</p> */}
-        <img src={item} alt="cat" width="50px" height="50px" />
-        </>
-        )
-        })}
-        </Items>
+    const deleteCatHandler = (index, inputAmount, totalPricePerCat) => {
+        let newBasket = [...props.basket];
+        newBasket.splice(index, 1);
+        props.setBasket(newBasket);
 
-    </Container>
+        let currentTotalPrice = props.cartTotalPrice;
+        props.setCartTotalPrice(Number(currentTotalPrice -= totalPricePerCat));
+        let currentTotalAmount = Number(props.cartTotalQuantity);
+        props.setCartTotalQuantity(currentTotalAmount -= Number(inputAmount))
+    };
+    return (
+        <>  
+            <p>Total Quantity: {props.cartTotalQuantity}</p>
+            <p>Total Price: £{props.cartTotalPrice}</p>
+            <Container>
+                <Wrapper>
+                    <NavbarItem flexGrow="3">Title</NavbarItem>
+                    <NavbarItem flexGrow="1">Quantity</NavbarItem>
+                    <NavbarItem flexGrow="1">Price</NavbarItem>
+                </Wrapper>
+                <Items>
+                {props.basket.map((item, index)=>{
+                return(
+                    <ShoppingBag key={index}>
+                    <Image src={item[0]} />
+                    <h1>{item[1]}</h1>                     
+                    <h1>{item[2]}</h1> {/* input Amount */}
+                    <h1>{item[3]}</h1> {/* price per cat  */}
+                    <button onClick={()=>{deleteCatHandler(index, item[2], item[4])}}>Delete</button>
+                    </ShoppingBag>
+                )
+                })}
+                </Items>
+            </Container>
         </>
     )
 }
@@ -46,7 +52,7 @@ export const Wrapper = styled.div`
     padding: 10px;
 `;
 export const NavbarItem = styled.div`
-font-weight: 700;
+    font-weight: 700;
     font-size: 16px;
     margin-right: 16px;
     color: black;
@@ -56,13 +62,19 @@ export const Container = styled.div`
 
 `
 export const Items = styled.div`
+    height: fit-content;
     display:flex;
     flex-direction: row;
     background-color: aliceblue;
-    height: 70px;
+    height: 85px;
     border-bottom: 1px solid grey;
 `
 
-export const Button = styled.button`
-
+export const ShoppingBag = styled.div`
+    display: flex;
+`
+export const Image = styled.img`
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
 `

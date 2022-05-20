@@ -1,43 +1,27 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components"
 import { faker } from '@faker-js/faker';
-import Cart from "./cart"
-let cartAmount = null
-
-
-
 
 const Cats = (props) => {
-  
-
-    
     return (
-      <>
-      {/* <p>{cartState.cat}</p> */}
-
-
-
       <Container>
       {props.id.map((cat, index) => {
-
-        return (<CatInfo index={index} name={cat} basket={props.basket} setBasket={props.setBasket}></CatInfo>)
-
+        return (
+        <div key={index}>
+        <CatInfo key={index} image={cat} catInfo={props.catInfo} setCatInfo={props.setCatInfo}
+            basket={props.basket} setBasket={props.setBasket} id={index} cartTotalPrice = {props.cartTotalPrice} setCartTotalPrice = {props.setCartTotalPrice} cartTotalQuantity = {props.cartTotalQuantity} setCartTotalQuantity = {props.setCartTotalQuantity}/>
+        </div>
+        )
       })}
       </Container>
-    </>
     )
-
 }
 
 const CatInfo =(props) =>{
   const [inputAmount, setInputAmount] = useState("")
-  // const addToCart = (amountWanted, catWanted) => {
-  //   cartAmount = amountWanted
-  // }
   const changeHandler = e => {
-
     setInputAmount(e.target.value)
-    console.log(inputAmount)
+    // console.log(inputAmount)
   }
 
   const [randName, setRandName] = useState("")
@@ -48,107 +32,58 @@ const CatInfo =(props) =>{
     setRandName(names)
     setRandNum(randNumb)
   }, [])
-
-  const [cartState, setCartState] = ([{
-    "cat" : "image_source",
-    "amount": 0,
-    "price" : 0,
-  }])
-  // const [cartCat, setCartCat] = useState([])
-  // const [cartAmount, setCartAmount] = useState([])
-  // const [cartPrice, setCartPrice] = ([])
   
-  const addToCart = (index, inputAmount, catImage, pricePerCat) => {
-    if(index ===0){
-      console.log("hello")
+  const addToCart = (totalPricePerCat, inputAmount) => {
+    if (inputAmount > 0){
+      // Cart items in array
+      let catBasket =[...props.basket];
+      catBasket.push([props.image.url, randName, inputAmount, randNum, totalPricePerCat]) // image, name, quantity, price
+      props.setBasket(catBasket);
+      // Cart Total price
+      let currentTotalPrice = props.cartTotalPrice;
+      props.setCartTotalPrice(Number(currentTotalPrice += totalPricePerCat));
+      // Cart Total Amount
+      let currentTotalAmount = Number(props.cartTotalQuantity);
+      
+      props.setCartTotalQuantity(currentTotalAmount += Number(inputAmount))
+      // console.log(catBasket) 
     }
-    let storedCatInfo = [...props.basket];
-    storedCatInfo.push(index);
-    storedCatInfo.push(props.name.url, randName, inputAmount, randNum);
-    props.setBasket(storedCatInfo);
-    console.log(storedCatInfo)
-
-
-    // let newCartState = [...cartState];
-    // let newCartAmount = [...cartAmount];
-    // let newCartCat = [...cartCat];
-    // let newCartPrice = [...cartPrice];
-    // newCartState[index].cat = catImage;
-    // newCartState[index].amount = inputAmount;
-    // newCartState[index].price = pricePerCat;
-    // // newCartState[index].amount(inputAmount);
-    // setCartState(newCartState)
-
-
-    // setInputText("")
-  };
-  // const removeHandler = (index) => {
-  //   let newtoDoArray = [...toDos];
-  //   newtoDoArray.splice(index, 1);
-  //   setToDos(newtoDoArray)
-  // };
-
+  }
   return(
     <div key={props.index}>
-      
-    {/* <AddToCart basket = {basket} cartState = {cartState} key = {props.index} cartCat = {cartCat} cartAmount = {cartAmount} cartPrice = {cartPrice}/> */}
-    <CatContainer>
-    <img src = {props.name.url} alt="cat" width="160px" height="160px"/>
+
+  <CatContainer>
+    <img src = {props.image.url} alt="cat" width="160px" height="160px"/>
     <p>{randName}</p>
     <p>COST: £{randNum}</p>
-    <p>Total: £{inputAmount <= 0  ? 0 : randNum *inputAmount }</p>{/* // placeholder value */}
-    <p>{inputAmount <= 0 ? 0 : inputAmount}</p>
+    <p>Total: £{randNum * inputAmount}</p> {/* total price per cat */}
+    <p>{inputAmount ? inputAmount: "0"}</p>
+  
+    <input type="number" min="0"  onChange={changeHandler}/>
 
-    <input type="number" value={inputAmount <= 0 ? 0 : inputAmount} onChange={changeHandler}/>
-    <button onClick={() => addToCart(props.index, inputAmount, props.name.url, (randNum * inputAmount))}>Add to Cart +</button>
-    
-    
-    {/* <p>{props.name.description}</p> */}
-    </CatContainer>
+    <button onClick={() =>addToCart((randNum * inputAmount), inputAmount)}>Add to Cart +</button>
+  </CatContainer>
 </div>
   )
-}
-
-const AddToCart = (props) => {
-    let cartArr = [{}]
-    let cartItem = {
-        "cat" : props.cartCat,
-        "amount": props.cartAmount,
-        "price" : props.cartPrice
-      }
-    return (
-      <>
-        <div key = {props.key}>
-          {/* <p><img src = {props.basket} alt="cat" width="16px" height="16px"/></p> */}
-          {/* <p>{props.cartState}</p> */}
-          {/* <p>{cartItem.cat}</p> */}
-          <p>{props.cartCat}</p>
-          <p>{props.cartAmount}</p>
-          <p>{props.cartPrice}</p>
-        </div>
-
-      
-      </>
-    )
 }
 
 export default Cats
 
 const CatContainer  = styled.div`
-border: black 2px solid;
-display: flex;
-flex-direction: column;
-justify-content: center;
+  border: black 2px solid;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 
 `
 
 const Container = styled.div`
-width: 85vw;
-height: 500px;
-    background-color: skyblue;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 15px;
+  width: 85vw;
+  height: 500px;
+  background-color: skyblue;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
 `
