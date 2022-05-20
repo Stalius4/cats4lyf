@@ -7,14 +7,14 @@ import logo from './logo';
 import styled from 'styled-components';
 
 const App = () => {
-  const [basket , setBasket] = useState([])// cat image
-  const [catInfo , setCatInfo] = useState([])// name, quantity, price
+  const [basket , setBasket] = useState([])
+  
   
 
   const [randomCatArr, setRandomCatArr] = useState([])
   const fetchData =  async () => {
     try {
-    const response = await fetch("https://api.thecatapi.com/v1/images/search?limit=9&page=100&order=DESC")
+    const response = await fetch("https://api.thecatapi.com/v1/images/search?limit=10&page=100&order=DESC")
     const data = await response.json()
     if (!response.ok){
       throw new Error(response.statusText)
@@ -45,8 +45,8 @@ const App = () => {
 
 
 
-   <Cart basket={basket} catInfo={catInfo}/>
-   <Cats id={randomCatArr} basket={basket} setBasket={setBasket} catInfo={catInfo} setCatInfo={setCatInfo}/>
+   <Cart basket={basket} />
+   <Cats id={randomCatArr} basket={basket} setBasket={setBasket} />
 
   
    

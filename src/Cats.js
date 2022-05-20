@@ -11,7 +11,7 @@ const Cats = (props) => {
       <>
       <Container>
       {props.id.map((cat, index) => {
-        return (<CatInfo key={index} image={cat} catInfo={props.catInfo} setCatInfo={props.setCatInfo}
+        return (<CatInfo key={index} image={cat} 
           basket={props.basket} setBasket={props.setBasket} id={index}></CatInfo>
 
         )
@@ -46,28 +46,27 @@ const CatInfo =(props) =>{
  
 
   const addToCart = ( ) => {
+    let storedCatInfo = [...props.basket];
+    storedCatInfo.push([props.image.url, randName, inputAmount, randNum]);// use [] to bundle cats info in 1 array
+    props.setBasket(  storedCatInfo );
 
-    let catImage = [...props.basket];
-    let catInfo =[...props.catInfo];
-    catInfo.push ( randName, inputAmount, randNum)// name, quantity, price
-    catImage.push(props.image.url);// image
-    props.setCatInfo(catInfo)
-    props.setBasket(  catImage );
-    console.log(catImage) 
+    console.log(storedCatInfo) 
   }
   return(
     <div >
       {}
     <CatContainer>
-    <img src = {props.image.url} alt="cat" width="160px" height="160px"/>
-    <p>{randName}</p>
-   <p>COST: £{randNum}</p>
-    <p>Total: £{randNum *inputAmount }</p>{/* // placeholder value */}
-    <p>{inputAmount ? inputAmount: "0"}</p>
-   
-    <input type="number" min="0"  onChange={changeHandler}/>
+    <CatImage src = {props.image.url} alt="cat" />
+    <Name>{randName}</Name>
+   <div>Price: £{randNum}</div>
     
-    <button onClick={() =>addToCart(props.id)}>Add to Cart +</button>
+    
+    <TotalAndInput>
+    <Input  placeholder="0" type="number" min="0"  onChange={changeHandler}/>
+    <Total>Total: £{randNum *inputAmount }</Total>{/* // placeholder value */}
+    
+    </TotalAndInput>
+    <AddCard onClick={() =>addToCart(props.id)}>Add to Cart</AddCard>
 
     </CatContainer>
 </div>
@@ -78,17 +77,84 @@ const CatInfo =(props) =>{
 export default Cats
 
 const CatContainer  = styled.div`
-border: #E0E0E0 7px solid;
+border-radius:10px;
+width: 200px;
+height: 325px;
+align-items:center;
 display: flex;
 flex-direction: column;
-justify-content: center;
-background-color: #F8B195;
+justify-content: stretch;
+background-color: whitesmoke;
 margin:35px;
+gap: 7px;
+box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+
+`
+const Total= styled.div`
+font-size:20px;`
+const CatImage = styled.img`
+width:200px;
+max-height: 179px;
+height: 160px;
+border-radius: 10px 10px 0px 0px;
+border-bottom: solid orange 2px;
+
+`
+
+const Name = styled.div`
+font-family: 'Akshar', sans-serif;
+font-size: 25px;
+`
+
+ const AddCard = styled.button`
+  margin: 10px;
+  width: 180px;
+  padding: 10px 0px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  border-radius: 10px;
+  display: block;
+  border: 0px;
+  font-weight: 700;
+  box-shadow: 0px 0px 14px -7px #f09819;
+  background-image: linear-gradient(45deg, #FF512F 0%, #F09819  51%, #FF512F  100%);
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  font-size: 15px;
+
+
+&:hover {
+  background-position: right center;
+ 
+  color: #fff;
+  text-decoration: none;
+}
+
+&:active {
+  transform: scale(0.95);
+}
+ `
+const TotalAndInput =styled.div`
+display: flex;
+font-family: 'Akshar', sans-serif;
+justify-content:stretch;
+
+
+`
+
+const Input= styled.input`
+width:40px;
 
 
 `
 
 const Container = styled.div`
+position:relative;
 width: 85vw;
 height: 500px;
 margin:85px;
@@ -97,5 +163,5 @@ flex-direction: row;
 flex-wrap: wrap;
 justify-content: center;
 gap: 15px;
-border-box: solid black 50px;
+
 `
