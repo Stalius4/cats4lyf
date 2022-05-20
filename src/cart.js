@@ -32,8 +32,8 @@ const Cart = (props) => {
                     <Image src={item[0]} />
                     <h1>{item[1]}</h1>                     
                     <h1>{item[2]}</h1> {/* input Amount */}
-                    <h1>{item[3]}</h1> {/* price per cat  */}
-                    <button onClick={()=>{deleteCatHandler(index, item[2], item[4])}}>Delete</button>
+                    <h1>{item[3]}</h1> {/* total price per cat  */}
+                    <button onClick={()=>{deleteCatHandler(index, item[2], item[3])}}>Delete</button>
                     </ShoppingBag>
                 )
                 })}

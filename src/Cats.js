@@ -37,7 +37,7 @@ const CatInfo =(props) =>{
     if (inputAmount > 0){
       // Cart items in array
       let catBasket =[...props.basket];
-      catBasket.push([props.image.url, randName, inputAmount, randNum, totalPricePerCat]) // image, name, quantity, price
+      catBasket.push([props.image.url, randName, inputAmount, totalPricePerCat]) // image, name, quantity, price
       props.setBasket(catBasket);
       // Cart Total price
       let currentTotalPrice = props.cartTotalPrice;
