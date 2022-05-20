@@ -7,3 +7,9 @@
 .title {
   color: green;
 }
+
+body{
+  background: #f1ebe1;
+  background-repeat: no-repeat;
+  background-size: cover
+}
