@@ -1,11 +1,11 @@
 import './App.css';
 import { useEffect, useState } from "react";
 import Cats from "./Cats"
-import Cart from "./Cart"
+import Cart from "./cart"
 import { faker } from '@faker-js/faker';
 
 const App = () => {
-
+  const [basket , setBasket] = useState([])
   
 
   const [randomCatArr, setRandomCatArr] = useState([])
@@ -26,7 +26,7 @@ const App = () => {
   
   
   useEffect (() => {
-    fetchData()// eslint-disable-next-line
+    fetchData()
     const names =faker.name.firstName()
   }, [])
 
@@ -37,8 +37,8 @@ const App = () => {
 
 
     <h1>Cats4lyf</h1>
-    <Cart/>
-    <Cats id={randomCatArr} />
+    <Cart basket={basket}/>
+    <Cats id={randomCatArr} basket={basket} setBasket={setBasket}/>
 
   
     </>

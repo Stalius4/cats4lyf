@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components"
 import { faker } from '@faker-js/faker';
-import Cart from "./Cart"
+import Cart from "./cart"
 let cartAmount = null
 
 
@@ -20,7 +20,7 @@ const Cats = (props) => {
       <Container>
       {props.id.map((cat, index) => {
 
-        return (<CatInfo index={index} name={cat} id={index}></CatInfo>)
+        return (<CatInfo index={index} name={cat} basket={props.basket} setBasket={props.setBasket}></CatInfo>)
 
       })}
       </Container>
@@ -58,15 +58,14 @@ const CatInfo =(props) =>{
   // const [cartAmount, setCartAmount] = useState([])
   // const [cartPrice, setCartPrice] = ([])
   
-  const [basket , setBasket] = useState([])
   const addToCart = (index, inputAmount, catImage, pricePerCat) => {
     if(index ===0){
       console.log("hello")
     }
-    let storedCatInfo = [...basket];
+    let storedCatInfo = [...props.basket];
     storedCatInfo.push(index);
-    // storedCatInfo.push(props.name.url, randName, inputAmount, randNum);
-    setBasket(storedCatInfo);
+    storedCatInfo.push(props.name.url, randName, inputAmount, randNum);
+    props.setBasket(storedCatInfo);
     console.log(storedCatInfo)
 
 

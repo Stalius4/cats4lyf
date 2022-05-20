@@ -22,6 +22,14 @@ const Cart = (props) => {
             {/* <p>Cat Wanted: {props.catImage}</p>
             <p>Cat Quantity: {props.catAmount}</p>
             <p>Cat Price: {props.catPrice}</p> */}
+        {props.basket.map((item, index)=>{
+        return(
+        <>
+        {/* <p key={index}>{item}</p> */}
+        <img src={item} alt="cat" width="50px" height="50px" />
+        </>
+        )
+        })}
         </Items>
 
     </Container>
