@@ -17,13 +17,22 @@ const Cart = (props) => {
           <NavbarItem flexGrow="1">Price</NavbarItem>
         </Wrapper>
         <Items>
-      {props.basket.map((item, index)=>{
-        return(
-          <p key={index}>{item}</p>
+      {props.basket.map((item, index)=>{ //image
+        return(<ShoppingBag key={index}>
+          <Image  src={item} />
+          <h1></h1>
+          </ShoppingBag>
+        )
+      })}
+ {props.catInfo.map((item, index)=>{// name , price , quantity 
+        return(<ShoppingBag key={index}>
+          
+          <h1>{item}</h1>
+          </ShoppingBag>
         )
       })}
         </Items>
-        <Button></Button>
+     
     </Container>
     );
    };
@@ -47,13 +56,19 @@ export const Container = styled.div`
 
 `
 export const Items = styled.div`
+height: fit-content;
 display:flex;
 flex-direction: row;
 background-color: aliceblue;
-height: 70px;
+height: 85px;
 border-bottom: 1px solid grey;
 `
 
-export const Button = styled.button`
-
+export const ShoppingBag = styled.div`
+display: flex;
+`
+export const Image = styled.img`
+height: 80px;
+width: 80px;
+border-radius: 50%;
 `

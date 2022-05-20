@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components"
 import { faker } from '@faker-js/faker';
-import Cart from "./cart"
-let cartAmount = null
+
+
 
 
 
@@ -15,7 +15,8 @@ const Cats = (props) => {
       <>
       <Container>
       {props.id.map((cat, index) => {
-        return (<CatInfo key={index} name={cat} basket={props.basket} setBasket={props.setBasket} id={index}></CatInfo>
+        return (<CatInfo key={index} image={cat} catInfo={props.catInfo} setCatInfo={props.setCatInfo}
+          basket={props.basket} setBasket={props.setBasket} id={index}></CatInfo>
 
         )
       })}
@@ -50,26 +51,28 @@ const CatInfo =(props) =>{
 
   const addToCart = ( ) => {
 
-    let storedCatInfo = [...props.basket];
-    storedCatInfo.push(props.name.url, randName, inputAmount, randNum);
-  
-    props.setBasket(  storedCatInfo );
-    console.log(storedCatInfo) 
+    let catImage = [...props.basket];
+    let catInfo =[...props.catInfo];
+    catInfo.push ( randName, inputAmount, randNum)// name, quantity, price
+    catImage.push(props.image.url);// image
+    props.setCatInfo(catInfo)
+    props.setBasket(  catImage );
+    console.log(catImage) 
   }
   return(
     <div >
       {}
     <CatContainer>
-    <img src = {props.name.url} alt="cat" width="160px" height="160px"/>
+    <img src = {props.image.url} alt="cat" width="160px" height="160px"/>
     <p>{randName}</p>
    <p>COST: £{randNum}</p>
     <p>Total: £{randNum *inputAmount }</p>{/* // placeholder value */}
     <p>{inputAmount ? inputAmount: "0"}</p>
    
-    <input type="number" value={inputAmount<=0 ? 0 : inputAmount} onChange={changeHandler}/>
+    <input type="number" min="0"  onChange={changeHandler}/>
     
     <button onClick={() =>addToCart(props.id)}>Add to Cart +</button>
-    <p>{props.name.description}</p>
+
     </CatContainer>
 </div>
   )
