@@ -6,6 +6,9 @@ import App from "./App";
 
 const Cart = (props) => {
 
+
+
+
     return (
     <Container>
         <Wrapper>
@@ -14,32 +17,20 @@ const Cart = (props) => {
           <NavbarItem flexGrow="1">Price</NavbarItem>
         </Wrapper>
         <Items>
-     {   props.basket.map((item, index)=>{
-    return(<ShoppingBag key={index}>
-      <Image  src={item[0]} /> 
-      <CartItem flexGrow="3">{item[1]}</CartItem>
-      <CartItem flexGrow="1">{item[2]}</CartItem>
-      <CartItem flexGrow="1">{item[3]}</CartItem>
-      </ShoppingBag>
-    )
-  })}
-    
- 
+          
         </Items>
-     
+        <Button></Button>
     </Container>
     );
    };
    export default Cart
 
    export const Wrapper = styled.div`
-   position: relative;
  display: flex;
- max-width: 80vw;
+ 
  align-items: center;
  background-color: grey;
  padding: 10px;
- padding-left: 80px;
 `;
 export const NavbarItem = styled.div`
 font-weight: 700;
@@ -49,29 +40,16 @@ font-weight: 700;
  flex-grow:${(props) => props.flexGrow};
 `;
 export const Container = styled.div`
-position: relative;
 
 `
 export const Items = styled.div`
-height: fit-content;
 display:flex;
-flex-direction: column;
+flex-direction: row;
 background-color: aliceblue;
-height: 85px;
+height: 70px;
 border-bottom: 1px solid grey;
 `
 
-export const ShoppingBag = styled.div`
-display: flex;
-background-color: yellow;
-width: 80vw;
-max-width: 80vw;
-`
-export const Image = styled.img`
-height: 80px;
-width: 80px;
-border-radius: 50%;
-`
-export const CartItem = styled.div`
-flex-grow:${(props) => props.flexGrow}
+export const Button = styled.button`
+
 `
