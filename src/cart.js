@@ -59,7 +59,6 @@ export const NavbarItem = styled.div`
     flex-grow:${(props) => props.flexGrow};
 `;
 export const Container = styled.div`
-
 `
 export const Items = styled.div`
     height: fit-content;
