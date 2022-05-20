@@ -91,7 +91,7 @@ box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rg
 
 `
 const Total= styled.div`
-font-size:20px`
+font-size:20px;`
 const CatImage = styled.img`
 width:200px;
 max-height: 179px;
