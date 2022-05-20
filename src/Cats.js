@@ -3,10 +3,6 @@ import styled from "styled-components"
 import { faker } from '@faker-js/faker';
 
 
-
-
-
-
 const Cats = (props) => {
   
 
@@ -82,20 +78,24 @@ const CatInfo =(props) =>{
 export default Cats
 
 const CatContainer  = styled.div`
-border: black 2px solid;
+border: #E0E0E0 7px solid;
 display: flex;
 flex-direction: column;
 justify-content: center;
+background-color: #F8B195;
+margin:35px;
+
 
 `
 
 const Container = styled.div`
 width: 85vw;
 height: 500px;
-    background-color: skyblue;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 15px;
+margin:85px;
+display: flex;
+flex-direction: row;
+flex-wrap: wrap;
+justify-content: center;
+gap: 15px;
+border-box: solid black 50px;
 `
