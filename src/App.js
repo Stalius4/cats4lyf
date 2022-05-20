@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import Cats from "./Cats"
 import Cart from "./cart"
 import { faker } from '@faker-js/faker';
+import logo from './logo';
+import styled from 'styled-components';
 
 const App = () => {
   const [basket , setBasket] = useState([])// cat image
@@ -25,7 +27,7 @@ const App = () => {
     }
   }
   
-  
+ 
   useEffect (() => {
     fetchData()
     const names =faker.name.firstName()
@@ -36,19 +38,27 @@ const App = () => {
     <>
  {/* {props.id.map((cat, index) => {} */}
 
+<div>
+  <Logo src={logo}></Logo>
 
-    <h1>Cats4lyf</h1>
-    <Cart basket={basket} catInfo={catInfo}/>
-    <Cats id={randomCatArr} basket={basket} setBasket={setBasket} catInfo={catInfo} setCatInfo={setCatInfo}/>
+  </div>
 
-    
 
+
+   <Cart basket={basket} catInfo={catInfo}/>
+   <Cats id={randomCatArr} basket={basket} setBasket={setBasket} catInfo={catInfo} setCatInfo={setCatInfo}/>
+
+  
+   
   
     </>
   );
 }
 
-
-
-
 export default App;
+
+const Logo = styled.img`
+width:200px;
+height:200px
+
+`
