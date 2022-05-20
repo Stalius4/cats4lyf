@@ -2,8 +2,8 @@ import './App.css';
 import { useEffect, useState } from "react";
 import Cats from "./Cats"
 import Cart from "./cart"
-import { faker } from '@faker-js/faker';
-import logo from './logo';
+
+
 import styled from 'styled-components';
 
 const App = () => {
@@ -33,7 +33,7 @@ const App = () => {
  
   useEffect (() => {
     fetchData()
-    const names =faker.name.firstName()
+    
   }, [])
 
 
@@ -42,16 +42,16 @@ const App = () => {
  {/* {props.id.map((cat, index) => {} */}
 
 <div>
-  <Logo src={logo}></Logo>
+  {/* <Logo src={logo}></Logo> */}
 
   </div>
 
 
-
-  <Cart basket={basket} setBasket = {setBasket} catInfo={catInfo} cartTotalPrice = {cartTotalPrice} setCartTotalPrice = {setCartTotalPrice} cartTotalQuantity = {cartTotalQuantity} setCartTotalQuantity = {setCartTotalQuantity}/>
+<MainFlex>
     <Cats id={randomCatArr} basket={basket} setBasket={setBasket} catInfo={catInfo} setCatInfo={setCatInfo} cartTotalPrice = {cartTotalPrice} setCartTotalPrice = {setCartTotalPrice} cartTotalQuantity = {cartTotalQuantity} setCartTotalQuantity = {setCartTotalQuantity}/>
+    <Cart basket={basket} setBasket = {setBasket} catInfo={catInfo} cartTotalPrice = {cartTotalPrice} setCartTotalPrice = {setCartTotalPrice} cartTotalQuantity = {cartTotalQuantity} setCartTotalQuantity = {setCartTotalQuantity}/>
 
-  
+</MainFlex>
    
   
     </>
@@ -60,8 +60,9 @@ const App = () => {
 
 export default App;
 
-const Logo = styled.img`
-width:200px;
-height:200px
 
-`
+
+const MainFlex = styled.div`
+
+display:flex;
+flex-direction:row;`

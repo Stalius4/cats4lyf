@@ -72,7 +72,7 @@ const CatInfo =(props) =>{
     
     
     <TotalAndInput>
-    <Input  placeholder="0" type="number" min="0"  onChange={changeHandler}/>
+    <Input  placeholder="0"  type="number" min="0"  onChange={changeHandler}/>
     <Total>Total: £{randNum *inputAmount }</Total>{/* // placeholder value */}
     
     </TotalAndInput>
@@ -95,7 +95,7 @@ display: flex;
 flex-direction: column;
 justify-content: stretch;
 background-color: whitesmoke;
-margin:35px;
+margin: 35px 35px;
 gap: 7px;
 box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
 
